@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    user-select: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #050505;
+    color: #ff3333;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #1a0505 0%, #000 100%);
+}
+
+.screen.active {
+    display: flex;
+}
+
+.header-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    border: 1px solid #ff3333;
+}
+
+#user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ff3333;
+}
+
+.lobby-actions, .create-room-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.create-room-box input {
+    background: #000;
+    border: 2px solid #ff3333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    outline: none;
+}
+
+.player-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+    width: 80%;
+    max-width: 600px;
+}
+
+.player-slot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(34, 0, 0, 0.5);
+    border: 1px dashed #ff3333;
+    padding: 10px;
+}
+
+.p-avatar { width: 40px; height: 40px; border-radius: 50%; }
+
+.btn-horror {
+    background: #200;
+    color: #ff3333;
+    border: 2px solid #ff3333;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 0 0 5px #ff0000;
+    box-shadow: 0 0 10px #200;
+    transition: 0.2s;
+}
+
+.btn-horror:hover {
+    background: #ff3333;
+    color: #000;
+    box-shadow: 0 0 20px #ff3333;
+}
+
+.glitch-title {
+    font-size: 4rem;
+    font-weight: bold;
+    position: relative;
+    animation: textGlitch 1s infinite;
+}
+
+@keyframes textGlitch {
+    0% { transform: translate(0); text-shadow: 2px -2px #ff0000, -2px 2px #00ff00; }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-1px, -1px); }
+    100% { transform: translate(0); }
+}
+
+#renderCanvas { width: 100%; height: 100%; display: block; }
+
+#command-box {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 500px;
+    background: rgba(0,0,0,0.9);
+    border: 2px solid #ff3333;
+    padding: 8px;
+    z-index: 10;
+}
+
+#command-box input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+.mobile-only {
+    display: none;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+#btn-mobile-chat {
+    background: rgba(255, 0, 0, 0.4);
+    border: 1px solid #ff3333;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) { .mobile-only { display: block; } }
+
+.glitch-overlay {
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.text-large { font-size: 3rem; color: #fff; }
+.text-status { font-size: 5rem; color: #ff0000; font-weight: bold; margin-top: 10px; }
+.text-sub { font-size: 1.5rem; color: #888; margin-top: 10px; }
+
+#cctv-ui {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: rgba(0,0,0,0.8);
+    border: 2px solid #ff0000;
+    padding: 15px;
+    text-align: center;
+}
+.cctv-header { font-size: 1.5rem; color: #00ff00; margin-bottom: 10px; font-weight: bold; }
+.hidden { display: none !important; }
